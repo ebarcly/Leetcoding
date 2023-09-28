@@ -1,16 +1,15 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        greater = []
+        result = []
 
-        for i in range(len(nums1)):
+        for num in nums1:
           found = False
-          for j in range(len(nums2)):
-            if found and nums2[j] > nums1[i]:
-              greater.append(nums2[j])
-              break
-            if nums1[i] == nums2[j]:
+          start_index = nums2.index(num) if num in nums2 else 0
+          for j in range(start_index, len(nums2)):
+            if nums2[j] > num:
+              result.append(nums2[j])
               found = True
-          else:
-            greater.append(-1)
-        return greater
-        
+              break
+          if not found:
+            result.append(-1)
+        return result
