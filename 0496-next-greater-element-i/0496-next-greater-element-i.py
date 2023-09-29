@@ -1,15 +1,13 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        result = []
+        stack, mapping = [], {}
 
-        for num in nums1:
-          found = False
-          start_index = nums2.index(num) if num in nums2 else 0
-          for j in range(start_index, len(nums2)):
-            if nums2[j] > num:
-              result.append(nums2[j])
-              found = True
-              break
-          if not found:
-            result.append(-1)
-        return result
+        # Iterate over nums2 to populate the mapping
+        for num in nums2:
+          while stack and stack[-1] < num:
+            mapping[stack.pop()] = num
+          stack.append(num)
+
+        # For elements in nums1, find the next greater element from the mapping
+        return [mapping.get(num, -1) for num in nums1]
+
