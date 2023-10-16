@@ -8,7 +8,7 @@ class Solution:
         text_dict = Counter(text)
 
         # Keep track of the maximum number of "balloon"s that can be formed
-        max_balloons = float('inf')  # Or len(balloons)
+        max_balloons = len(text)
 
         # Iterate over each letter in "balloon"
         for letter in balloons:
