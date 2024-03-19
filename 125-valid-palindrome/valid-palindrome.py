@@ -3,11 +3,12 @@ class Solution:
         if len(s) == 1:
             return True
         
-        convert = []
+        convert = ''
         for char in s:
             if char.isdigit() or char.isalpha():
-                convert.append(char.lower())
-        
+                convert += char
+        convert = convert.lower()
+
         left, right = 0, len(convert) - 1
         while left <= right:
             if convert[left] != convert[right]:
