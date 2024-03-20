@@ -10,3 +10,5 @@ class Solution:
                 low += 1
             else:
                 return [low + 1, high + 1]
+                
+        return -1
