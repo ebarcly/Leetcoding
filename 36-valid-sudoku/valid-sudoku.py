@@ -4,20 +4,20 @@ class Solution:
         cols = [set() for _ in range(9)]
         boxes = [set() for _ in range(9)]
 
-        for r in range(9):
-            for c in range(9):
-               if board[r][c] != ".":
+        for i in range(9):
+            for j in range(9):
+                if board[i][j] != ".":
 
-                num = board[r][c]
-                box_ids = (r // 3) * 3 + (c // 3)
+                    num = board[i][j]
+                    box_idx = (i // 3) * 3 + (j // 3)
 
-                if (num in rows[r] or
-                    num in cols[c] or
-                    num in boxes[box_ids]):
-                    return False
-                
-                rows[r].add(num)
-                cols[c].add(num)
-                boxes[box_ids].add(num)
-
+                    if (num in rows[i] or
+                        num in cols[j] or
+                        num in boxes[box_idx]):
+                        return False
+                    
+                    rows[i].add(num)
+                    cols[j].add(num)
+                    boxes[box_idx].add(num)
+        
         return True
