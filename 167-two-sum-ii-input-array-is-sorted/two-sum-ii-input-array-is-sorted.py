@@ -4,7 +4,7 @@ class Solution:
         i = 0
         j = len(numbers) - 1
 
-        for _ in range(len(numbers)):
+        while i < j:
             if numbers[i] + numbers[j] == target:
                 ans.append(i + 1)
                 ans.append(j + 1)
