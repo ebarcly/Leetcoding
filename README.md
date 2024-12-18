@@ -1,2 +1,2 @@
-# Leetcoding
-Collection of LeetCode questions to ace the coding interview
+# Leetcoding... 
+LeetCode questions I've solved. Do not get too inspired :)
