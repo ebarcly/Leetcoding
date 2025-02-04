@@ -3,7 +3,7 @@ class Solution:
         nums_dict = {}
 
         for i, n in enumerate(nums):
-            complement = target - n
-            if complement in nums_dict:
-                return [i, nums_dict[complement]]
+            diff = target - n
+            if diff in nums_dict:
+                return [nums_dict[diff], i]
             nums_dict[n] = i
