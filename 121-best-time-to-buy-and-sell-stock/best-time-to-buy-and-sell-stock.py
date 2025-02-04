@@ -6,5 +6,7 @@ class Solution:
         for price in prices:
             if price < min_p:
                 min_p = price
-            total = max(total, price - min_p)
+            cur = price - min_p
+            if cur > total:
+                total = cur
         return total
