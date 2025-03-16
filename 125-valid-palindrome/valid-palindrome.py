@@ -1,20 +1,5 @@
+import re
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        if len(s) == 1:
-            return True
-        
-        convert = ''
-        for char in s:
-            if char.isdigit() or char.isalpha():
-                convert += char
-        convert = convert.lower()
-
-        left, right = 0, len(convert) - 1
-        while left <= right:
-            if convert[left] != convert[right]:
-                return False
-
-            left += 1
-            right -= 1
-
-        return True
+        clean_s = re.sub(r'[^a-zA-Z0-9]', '', s).lower()
+        return clean_s == clean_s[::-1]
