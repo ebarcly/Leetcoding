@@ -1,17 +1,14 @@
+from collections import Counter
+from heapq import heappush, heappop
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
-        freq = {}
-        sort_freq = [[] for i in range(len(nums) + 1)]
+        # [1,1,1,2,2,3] k = 2 
+        # 1: 3, 2: 2, 3: 1
+        freq = Counter(nums)
+        min_heap = []
 
-        for i in nums:
-            freq[i] = 1 + freq.get(i, 0)
-        
-        for n, v in freq.items():
-            sort_freq[v].append(n)
-
-        res = []
-        for i in range(len(sort_freq) -1, 0, -1):
-            for n in sort_freq[i]:
-                res.append(n)
-            if len(res) == k:
-                return res
+        for n, f in freq.items():
+            heappush(min_heap, (f, n))
+            if len(min_heap) > k:
+                heappop(min_heap)
+        return [v[1] for v in min_heap]
