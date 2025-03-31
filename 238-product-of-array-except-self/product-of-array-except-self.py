@@ -1,13 +1,17 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-                                    # 1[1,2,3,4]1
-        product = [1] * len(nums)  # prefix -> [1,1,6,24] sufixes <- [1,1,6,24]
-
-        for n in range(1, len(nums)):
-            product[n] = product[n - 1] * nums[n - 1]
+        # ans = []
+        # postfix = 24
         
-        right = nums[-1]
-        for i in range(len(nums) -2, -1, -1):
-            product[i] *= right
-            right *= nums[i]
-        return product
+        length = len(nums)
+        ans = [1] * length
+        
+        for i in range(1, length):
+            ans[i] = ans[i-1] * nums[i-1]
+        
+        postfix = 1
+        for i in reversed(range(length)):
+            ans[i] *= postfix
+            postfix *= nums[i]
+        
+        return ans
